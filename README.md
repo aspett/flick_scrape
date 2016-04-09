@@ -10,6 +10,6 @@ This is a stopgap script to scrape daily usage data from Flick.
 
 - `bundle install`
 - Open `main.rb`, and change the constants, `EMAIL` and `PASSWORD` to your email and password.
-- `bundle exec main.rb`
+- `bundle exec ruby main.rb`
 
 Data is outputted as CSV to `flick_usage.csv`
