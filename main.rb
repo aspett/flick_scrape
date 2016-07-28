@@ -50,7 +50,10 @@ class FlickScrape
   def add_data
     data = @driver.execute_script("return FLICK.CHARTS.data")
 
-    consumption = data["consumption"].map{ |consumption| [parse_date(consumption["date"]), consumption["value"]] }
+    consumption = data["consumption"].each_with_index.map do |consumption, index|
+      date = @driver.execute_script("return FLICK.CHARTS.data.consumption[#{index}].date.toString()")
+      [parse_date(date), consumption["value"]]
+    end
 
     @data_array += consumption
   end
